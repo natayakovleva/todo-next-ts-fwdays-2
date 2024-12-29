@@ -1,45 +1,38 @@
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 import { Todo } from "@/types/todo";
 
-export default async function CreateTodo() {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+import { getTodos } from "@/app/todos/actions/getTodos";
 
 
 
-  const { data: todos, error} = await supabase.from('todos').select();
 
-  if (error) {
-    throw new Error(`Failed to fetch todos: ${error.message}`);
-  }
+const CreateTodo = async () => {
+  
+  const { data: todos } = await getTodos({});
 
   console.log(todos);
 
   return (
     <section>
-      <h2>CreateTodo</h2>
+      <h2>Create Todo</h2>
 
       <div>
         <Button>Click me</Button>
       </div>
 
       <div>
-        <h3>UL</h3>
-        {/* <ul>
-          {todos?.map((todo:any) => (
-            <li>{todo}</li>
+        <h3>Todo List</h3>
+        <ul>
+          {todos.map((todo: Todo) => (
+            <li key={todo.id}>{todo.title}</li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     </section>
   );
-}
+};
 
-
-
-
+export default CreateTodo;
 
 
 
