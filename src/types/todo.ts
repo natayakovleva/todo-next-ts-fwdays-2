@@ -1,3 +1,6 @@
+
+import { Priority, SortBy, Status } from "@/constants/todos";
+
 export type Todo = {
   id: string;
   title: string;
@@ -6,3 +9,10 @@ export type Todo = {
   priority: string;
   completed: boolean;
 };
+
+export type SearchParams = {
+  sortBy?: SortBy;
+  priority?: Priority; 
+  completed?: Status; 
+  due_date?: string; 
+}

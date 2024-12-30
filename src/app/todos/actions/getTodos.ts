@@ -1,16 +1,16 @@
 "use server";
 
-import { Todo } from "@/types/todo";
+import { Todo, SearchParams } from "@/types/todo";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { Priority, SortBy, Status } from "@/constants/todos";
 
-interface SearchParams {
-  sortBy?: SortBy;
-  priority?: Priority; 
-  completed?: Status; 
-  due_date?: string; 
-}
+// interface SearchParams {
+//   sortBy?: SortBy;
+//   priority?: Priority; 
+//   completed?: Status; 
+//   due_date?: string; 
+// }
 
 // export async function getTodos(searchParams: SearchParams): Promise<{ data: Todo[] }> {
   export async function getTodos(): Promise<{ data: Todo[] }> {
