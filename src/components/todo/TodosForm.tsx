@@ -14,10 +14,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 
 import { Priority } from "@/constants/todos";
+import addTodo from "@/app/todos/actions/addTodos";
 
 export const TodosForm: React.FC<Props> = ({ todo }) => {
   return (
-    <form className="space-y-6 max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg">
+    <form action={addTodo} 
+          className="space-y-6 max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg">
       <div className="space-y-2">
         <Label htmlFor="title">Title</Label>
         <Input
