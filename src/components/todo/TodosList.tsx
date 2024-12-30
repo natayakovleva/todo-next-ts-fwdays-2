@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { TodosForm } from "@/components/todo/TodosForm";
 import { Priority } from "@/constants/todos";
+import deleteTodo from "@/app/todos/actions/deleteTodo";
 
 // export async function TodosList({ searchParams }: { searchParams: SearchParams }) {
   export async function TodosList() {
@@ -75,7 +76,7 @@ import { Priority } from "@/constants/todos";
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-white rounded-b-lg">
                 <form
-                  // action={deleteTodo}
+                  action={deleteTodo}
                   className="flex items-center justify-start mb-4"
                 >
                   <input type="hidden" name="id" value={todo.id} />
