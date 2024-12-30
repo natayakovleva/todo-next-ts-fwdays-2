@@ -12,8 +12,7 @@ import { TodosForm } from "@/components/todo/TodosForm";
 import { Priority } from "@/constants/todos";
 import deleteTodo from "@/app/todos/actions/deleteTodo";
 
-// export async function TodosList({ searchParams }: { searchParams: SearchParams }) {
-  export async function TodosList() {
+export async function TodosList({ searchParams }: { searchParams: SearchParams }) {
   const { data: todos } = await getTodos();
 
   if (!todos?.length) {
@@ -89,8 +88,7 @@ import deleteTodo from "@/app/todos/actions/deleteTodo";
                   </Button>
                 </form>
                 <div className="mt-4">
-                  {/* <TodosForm todo={todo} isUpdateTodo /> */}
-                  <TodosForm />
+                  <TodosForm todo={todo} isUpdateTodo />
                 </div>
               </AccordionContent>
             </AccordionItem>
