@@ -13,7 +13,7 @@ import { Priority } from "@/constants/todos";
 import deleteTodo from "@/app/todos/actions/deleteTodo";
 
 export async function TodosList({ searchParams }: { searchParams: SearchParams }) {
-  const { data: todos } = await getTodos();
+  const { data: todos } = await getTodos(searchParams);
 
   if (!todos?.length) {
     return null;

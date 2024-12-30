@@ -11,8 +11,8 @@ export type Todo = {
 };
 
 export type SearchParams = {
-  sortBy?: SortBy;
-  priority?: Priority; 
-  completed?: Status; 
-  due_date?: string; 
-}
+  sortBy: SortBy; 
+  priority: Priority; 
+  completed: Status; 
+  due_date: Date; 
+};
