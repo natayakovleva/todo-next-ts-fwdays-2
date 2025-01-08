@@ -1,14 +1,12 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { Priority } from "@/constants/todos";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function addTodo(formData: FormData) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = await createClient();
 
   const todoData = {
     title: formData.get("title")?.toString() || "",

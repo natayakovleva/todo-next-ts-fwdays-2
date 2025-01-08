@@ -2,14 +2,12 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { Todo, SearchParams } from "@/types/todo";
-import { cookies } from "next/headers";
 import { Priority, SortBy, Status } from "@/constants/todos";
 
 export async function getTodos(
   searchParams: SearchParams
 ): Promise<{ data: Todo[] }> {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+  const supabase = await createClient();
 
   let query = supabase
     .from("todos")
