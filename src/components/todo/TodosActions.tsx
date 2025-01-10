@@ -20,11 +20,14 @@ import { Input } from "../ui/input";
 import { Priority, SortBy, Status } from "@/constants/todos";
 import { SearchParams } from "@/types/todo";
 
+
+
 export default function TodosActions({
   searchParams,
 }: {
   searchParams: SearchParams;
 }) {
+
   return (
     <section className="p-6 bg-gray-50 sm:p-8 md:p-12">
       <Card className="shadow-lg border rounded-lg bg-white mx-auto max-w-md sm:max-w-lg md:max-w-2xl">

@@ -1,6 +1,5 @@
 
-import { SearchParams } from "@/types/todo";
-import { getTodos } from "@/app/todos/actions/getTodos";
+import { Todo } from "@/types/todo";
 import {
   Accordion,
   AccordionContent,
@@ -12,8 +11,10 @@ import { TodosForm } from "@/components/todo/TodosForm";
 import { Priority } from "@/constants/todos";
 import deleteTodo from "@/app/todos/actions/deleteTodo";
 
-export async function TodosList({ searchParams }: { searchParams: SearchParams }) {
-  const { data: todos } = await getTodos(searchParams);
+export async function TodosList({ todos }: { todos: Todo[] })  {
+  if (!todos?.length) {
+    return null;
+  }
 
   if (!todos?.length) {
     return null;

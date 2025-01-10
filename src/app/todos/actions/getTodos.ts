@@ -9,25 +9,28 @@ export async function getTodos(
 ): Promise<{ data: Todo[] }> {
   const supabase = await createClient();
 
+
+  const params = await searchParams; 
+
   let query = supabase
     .from("todos")
     .select()
-    .order(getSortBy(searchParams.sortBy), { ascending: true });
+    .order(getSortBy(params.sortBy), { ascending: true });
 
-  const priority = getPriority(searchParams.priority);
+  const priority = getPriority(params.priority);
 
   if (priority !== Priority.ANY) {
     query = query.eq("priority", priority);
   }
 
   if (
-    searchParams.completed !== undefined &&
-    searchParams.completed !== Status.ALL
+    params.completed !== undefined &&
+    params.completed !== Status.ALL
   ) {
-    query = query.eq("completed", searchParams.completed === Status.COMPLETED);
+    query = query.eq("completed", params.completed === Status.COMPLETED);
   }
 
-  const dueDate = getDueDate(searchParams.due_date);
+  const dueDate = getDueDate(params.due_date);
 
   if (dueDate) {
     const formattedDate = new Date(formatDate(dueDate)).toISOString();
